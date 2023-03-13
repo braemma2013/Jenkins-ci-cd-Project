@@ -11,6 +11,12 @@ pipeline {
             steps {
                 sh 'mvn clean install'
             }
+        } 
+        stage('Test') {
+            steps {junit 'myproject/target/test-reports/*.xml'
+                echo 'Testing..'
+            }    
+            
         }
         stage('Deploy') {
             steps {deploy adapters: [tomcat9(credentialsId: '34754f07-11cd-4df8-8954-ff888e8110ae', path: '', url: 'http://18.234.199.142:8080/')], contextPath: null, war: '**/*.war'
