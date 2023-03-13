@@ -7,9 +7,9 @@ pipeline {
                 echo 'Checking out..'
             }
         }
-        stage('Build') {
-            steps {mvn package
-                echo 'Building..'
+        stage('build') {
+            steps {
+                sh 'mvn clean install -f JavaWebCalculator-master/pom.xml'
             }
         }
         stage('Deploy') {
