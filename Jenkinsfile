@@ -2,14 +2,14 @@ pipeline {
     agent any
 
     stages {
-        stage('Code Checkout from version control') {
+        stage('Git) {
             steps {checkout scmGit(branches: [[name: '*/main']], extensions: [cleanBeforeCheckout()], userRemoteConfigs: [[url: 'https://github.com/braemma2013/Jenkins-ci-cd-Project.git']])
                 echo 'Checking out..'
             }
         }
         stage('build') {
             steps {
-                sh 'mvn clean install -f JavaWebCalculator-master/pom.xml'
+                sh 'mvn clean install'
             }
         }
         stage('Deploy') {
