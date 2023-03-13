@@ -1,8 +1,6 @@
 pipeline {
     agent any    
-    environment {
-        PATH = /usr/bin: $PATH
-    }    
+    
     stages {
         stage('Git') {
             steps {checkout scmGit(branches: [[name: '*/main']], extensions: [cleanBeforeCheckout()], userRemoteConfigs: [[url: 'https://github.com/braemma2013/Jenkins-ci-cd-Project.git']])
