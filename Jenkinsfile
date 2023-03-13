@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Git) {
+        stage('Git') {
             steps {checkout scmGit(branches: [[name: '*/main']], extensions: [cleanBeforeCheckout()], userRemoteConfigs: [[url: 'https://github.com/braemma2013/Jenkins-ci-cd-Project.git']])
                 echo 'Checking out..'
             }
