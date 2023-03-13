@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Code Checkout from version control') {
             steps {checkout scmGit(branches: [[name: '*/main']], extensions: [cleanBeforeCheckout()], userRemoteConfigs: [[url: 'https://github.com/braemma2013/Jenkins-ci-cd-Project.git']])
-                echo 'Building..'
+                echo 'Checking out..'
             }
         }
         stage('Build') {
             steps {mvn package
-                echo 'Testing..'
+                echo 'Building..'
             }
         }
         stage('Deploy') {
