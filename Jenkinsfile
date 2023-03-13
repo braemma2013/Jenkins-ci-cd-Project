@@ -2,13 +2,13 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
-            steps {mvn package
+        stage('Code Checkout from version control') {
+            steps {checkout scmGit(branches: [[name: '*/main']], extensions: [cleanBeforeCheckout()], userRemoteConfigs: [[url: 'https://github.com/braemma2013/Jenkins-ci-cd-Project.git']])
                 echo 'Building..'
             }
         }
-        stage('Test') {
-            steps {
+        stage('Build') {
+            steps {build 'CalculatorwebApp'
                 echo 'Testing..'
             }
         }
